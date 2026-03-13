@@ -31,6 +31,12 @@
       from{opacity:0;transform:translateY(30px)}
       to{opacity:1;transform:translateY(0)}
     }
+    .scroll-animate{ opacity:0; transform:translateY(40px); transition:opacity 0.6s ease, transform 0.6s ease; }
+    .scroll-animate.visible{ opacity:1; transform:translateY(0); }
+    .scroll-animate.delay-1{ transition-delay:0.1s; }
+    .scroll-animate.delay-2{ transition-delay:0.2s; }
+    .scroll-animate.delay-3{ transition-delay:0.3s; }
+    .scroll-animate.delay-4{ transition-delay:0.4s; }
     @keyframes fadeIn{
       from{opacity:0}
       to{opacity:1}
@@ -618,12 +624,7 @@
     .mchip.cool{ border-color: rgba(84,160,255,.35); background: rgba(84,160,255,.1); }
     .mchip.good{ border-color: rgba(255,159,243,.35); background: rgba(255,159,243,.1); }
 
-    .proj{animation:fadeUp 0.6s ease-out both}
-    .grid2 .proj:nth-child(1){animation-delay:0.1s}
-    .grid2 .proj:nth-child(2){animation-delay:0.2s}
-    .grid2 .proj:nth-child(3){animation-delay:0.3s}
-    .grid2 .proj:nth-child(4){animation-delay:0.4s}
-    .grid2 .proj:nth-child(5){animation-delay:0.5s}
+
 
     .proj .pdesc a{
       color: var(--accent);
@@ -634,11 +635,7 @@
       text-decoration:underline;
     }
 
-    .section#contact .grid2 .proj{animation:fadeUp 0.6s ease-out both}
-    .section#contact .grid2 .proj:nth-child(1){animation-delay:0.1s}
-    .section#contact .grid2 .proj:nth-child(2){animation-delay:0.15s}
-    .section#contact .grid2 .proj:nth-child(3){animation-delay:0.2s}
-    .section#contact .grid2 .proj:nth-child(4){animation-delay:0.25s}
+
     .section#contact .grid2 .proj a{
       color: var(--accent);
       transition:all .2s ease;
@@ -772,7 +769,7 @@
     <section class="section" id="projects">
       <div class="sectionHead">
         <div>
-          <h1 style="animation:fadeUp 0.6s ease-out">Featured Projects</h1>
+          <h1>Featured Projects</h1>
           <p>Full-stack design and development work</p>
         </div>
       </div>
@@ -906,7 +903,7 @@
     <section class="section" id="experience">
       <div class="sectionHead">
         <div>
-          <h2 style="animation:fadeUp 0.6s ease-out">Experience</h2>
+          <h2>Experience</h2>
           <p>Impact and design outcomes</p>
         </div>
       </div>
@@ -991,7 +988,7 @@
     <section class="section" id="skills">
       <div class="sectionHead">
         <div>
-          <h2 style="animation:fadeUp 0.6s ease-out">Skills</h2>
+          <h2>Skills</h2>
           <p>Core competencies</p>
         </div>
       </div>
@@ -1056,7 +1053,7 @@
     <section class="section" id="contact">
       <div class="sectionHead">
         <div>
-          <h2 style="animation:fadeUp 0.6s ease-out">Contact</h2>
+          <h2>Contact</h2>
           <p>Let's connect and create something great</p>
         </div>
       </div>
@@ -1126,6 +1123,22 @@
         ticking = true;
       }
     }, { passive: true });
+
+    // Scroll animation observer (both scroll down and up)
+    const observerOptions = { threshold:0.1, rootMargin:'0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, observerOptions);
+    document.querySelectorAll('.section, .proj, .illusCard').forEach((el, i) => {
+      el.classList.add('scroll-animate', 'delay-' + (i % 5));
+      observer.observe(el);
+    });
   </script>
 </body>
 </html>
