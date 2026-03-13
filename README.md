@@ -141,6 +141,7 @@ Modern restaurant site with menu showcase and reservation system.
 - **Glowing Logo**: 3D "TP" initials with pulsing glow animation
 - **Gradient Text**: Hero heading with white-to-pink gradient
 - **Smooth Animations**: Fade-up entrance animations on all sections
+- **Rotating Avatar**: Profile image randomly changes every 3-4 seconds between 6 avatar variants
 
 ### Interactive Elements
 - **Buttons**: Blue gradient accent buttons with glow hover effects
@@ -148,6 +149,12 @@ Modern restaurant site with menu showcase and reservation system.
 - **Project Cards**: Staggered reveal animations with gradient top border
 - **Skill Chips**: Scale animation on hover
 - **Meta Pills**: Background color change on hover
+
+### Responsive Design
+- **Mobile Navigation**: Hamburger menu for screens under 920px
+- **Fluid Typography**: Font sizes scale with viewport using clamp()
+- **Adaptive Layouts**: Grid switches from single to multi-column on larger screens
+- **Touch-Friendly**: Buttons and interactive elements sized for mobile tapping
 
 ### 3D Background Objects
 - Pink cube (top-left) - rotates and floats
@@ -161,8 +168,8 @@ All 3D objects rotate and move with scroll position for parallax depth effect.
 
 ## Customization
 
-### Changing Profile Image
-Replace `avatar.jpg` with your own photo (recommended: square aspect ratio, 400x400px or larger).
+### Changing Profile Images
+Replace any of the avatar files (avatar.jpg, avatar2.jpg, etc.) with your own photos. The website will randomly cycle through all available avatar images every 3-4 seconds. Recommended: square aspect ratio, 400x400px or larger.
 
 ### Updating Personal Information
 Edit the `index.html` file to update:
@@ -202,8 +209,13 @@ Each object has a `data-scroll-speed` attribute controlling parallax speed:
 ```
 Portfolio/
 ├── index.html           # Main portfolio website
-├── avatar.jpg          # Profile photo
-├── Resume - Tejas Patel.pdf  # Resume/CV
+├── avatar.jpg          # Profile photo (primary)
+├── avatar2.jpg         # Profile photo (variant 2)
+├── avatar3.jpg         # Profile photo (variant 3)
+├── avatar4.jpg         # Profile photo (variant 4)
+├── avatar5.jpg         # Profile photo (variant 5)
+├── avatar6.jpg         # Profile photo (variant 6)
+├── Resume-Tejas-Patel.pdf  # Resume/CV
 └── README.md           # This file
 ```
 
